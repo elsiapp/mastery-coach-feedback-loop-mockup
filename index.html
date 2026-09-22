@@ -1,11 +1,812 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mastery — Coach · Plan & attendance</title><style>
-:root{--g:#1ca83e;--ink:#172235;--muted:#667085;--line:#e5e7eb;--soft:#f8f9f7;--paper:#fff;--amber:#f0a229}*{box-sizing:border-box}body{margin:0;background:#f7f8f6;color:var(--ink);font:14px/1.45 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.page{max-width:980px;margin:auto;padding:30px 22px 60px}.brand{font-weight:800;font-size:18px;letter-spacing:-.03em;margin-bottom:22px}.brand span{font-weight:500;color:#98a2b3}.shell{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden}.head{padding:23px 26px 0;border-bottom:1px solid var(--line)}.sessionbar{display:flex;justify-content:space-between;gap:18px;align-items:flex-start}.date{font-size:11px;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.08em}.sessionbar h1{font-size:25px;line-height:1.1;letter-spacing:-.04em;margin:7px 0 4px}.place{color:var(--muted);font-size:13px}.picker-wrap{position:relative}.picker-trigger{border:0;background:transparent;color:var(--muted);padding:4px;display:flex;align-items:center;gap:8px;cursor:pointer}.dots{display:flex;gap:5px}.dots i{width:6px;height:6px;border-radius:50%;display:block;background:#d0d5dd}.dots .ready{background:var(--g)}.dots .current{width:8px;height:8px;background:var(--ink)}.dots .future{background:#fff;border:1px solid #c5cbd2}.picker{display:none;position:absolute;right:0;top:32px;width:365px;z-index:5;background:white;border:1px solid var(--line);border-radius:12px;box-shadow:0 14px 35px rgba(16,24,40,.14);padding:11px 0}.picker.show{display:block}.picktop{padding:0 14px 9px;display:flex;justify-content:space-between;font-size:13px}.picktop button{border:0;background:transparent;color:var(--muted);cursor:pointer}.day{border-top:1px solid var(--line)}.daylabel{padding:9px 14px 4px;font-size:10px;letter-spacing:.06em;font-weight:800;text-transform:uppercase;color:#98a2b3}.pick{display:grid;grid-template-columns:47px 1fr auto;gap:8px;align-items:center;width:100%;border:0;background:white;color:var(--ink);padding:9px 14px;text-align:left;cursor:pointer}.pick:hover,.pick.active{background:var(--soft)}.pick time{font-size:11px;color:var(--muted)}.pick b{display:block;font-size:12px}.pick small{display:block;font-size:10px;color:var(--muted)}.pick .state{font-size:10px;color:var(--muted);white-space:nowrap}.state:before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:#cfd4da;margin-right:5px}.state.ready:before{background:var(--g)}.state.current:before{background:var(--ink)}.skillstrip{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-top:16px}.skillstrip span{font-size:12px;color:var(--muted)}.skillpill{border:1px solid var(--line);border-radius:999px;background:var(--soft);padding:5px 10px;font-size:11px;font-weight:750}.tabs{display:flex;gap:5px;margin-top:13px}.tab{border:0;border-bottom:2px solid transparent;background:transparent;color:var(--muted);padding:10px 12px;font-weight:750;cursor:pointer}.tab.active{color:var(--ink);border-bottom-color:var(--ink)}.view{display:none}.view.active{display:block}.section{padding:20px 26px;border-bottom:1px solid var(--line)}.section h2{font-size:15.5px;letter-spacing:-.02em;margin:0 0 10px}.tag{float:right;border:1px solid var(--line);border-radius:5px;padding:2px 6px;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#98a2b3}.drill{display:flex;gap:12px;align-items:center;background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-top:8px;cursor:pointer}.drill:hover{background:#f2f4f2}.num{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;border:1px solid #d0d5dd;background:white;font-size:10px;font-weight:800;color:#475467}.drill b{flex:1;font-size:13px}.chev{font-size:17px;color:#98a2b3}.hint,.groupstatus{font-size:12px;color:var(--muted);margin:-4px 0 10px}.focus{width:100%;min-height:98px;border:1px solid #d0d5dd;border-radius:9px;padding:10px;font:inherit;font-size:13px;color:var(--ink);resize:vertical}.focus:focus,.note:focus{outline:2px solid #d9f0df;border-color:var(--g)}.controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:11px}.sort{position:relative}.smallbtn,.chip{border:1px solid #d0d5dd;border-radius:8px;background:white;color:#475467;padding:6px 10px;font-size:12px;cursor:pointer}.chip{border-radius:999px}.chip.active{background:var(--ink);border-color:var(--ink);color:#fff}.sortmenu{display:none;position:absolute;top:35px;left:0;width:180px;z-index:2;padding:5px;background:white;border:1px solid var(--line);border-radius:9px;box-shadow:0 10px 25px rgba(16,24,40,.12)}.sortmenu.show{display:block}.sortmenu button{display:block;width:100%;border:0;background:white;border-radius:6px;padding:8px;text-align:left;color:#344054;cursor:pointer}.sortmenu button:hover{background:var(--soft)}.roster{border-top:1px solid var(--line)}.grow{display:flex;gap:10px;align-items:flex-start;padding:10px 4px;border-bottom:1px solid var(--line);cursor:pointer}.grow.open{background:#fbfefb}.avatar{width:33px;height:33px;border-radius:50%;display:grid;place-items:center;background:#1f5f7a;color:white;font-size:10px;font-weight:800;flex:0 0 auto}.b{background:#7a4a1f}.c{background:#5b1f7a}.d{background:#7a1f4a}.e{background:#3f6b4a}.f{background:#4a5568}.player{flex:1;min-width:0}.player b{font-size:13px}.meta{color:var(--muted);font-size:11.5px;margin-top:2px}.ptag{font-size:10px;font-weight:800;border:1px solid var(--line);background:var(--soft);color:#475467;border-radius:4px;padding:1px 5px;margin-left:4px}.star{width:29px;height:29px;border:1px solid #d0d5dd;background:white;border-radius:50%;color:#98a2b3;font-size:14px;cursor:pointer}.star.on{background:var(--ink);border-color:var(--ink);color:#fff}.detail{display:none;padding:0 4px 15px 47px;border-bottom:1px solid var(--line)}.detail.show{display:block}.detaillabel{font-size:10px;font-weight:800;color:#98a2b3;letter-spacing:.06em;text-transform:uppercase;margin:13px 0 6px}.history{display:flex;gap:5px;align-items:center}.history i{width:7px;height:7px;border-radius:50%;background:#c5cbd2}.history i.s{background:var(--g)}.history i.n{background:var(--amber)}.history i.a{background:white;border:1px solid #98a2b3}.skills{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.skill{border:1px solid var(--line);border-radius:8px;background:var(--soft);padding:6px 8px;font-size:10px}.skill b{display:block;font-size:10px}.skill span{color:var(--muted)}.visibility{display:flex;width:max-content;border:1px solid #d0d5dd;border-radius:8px;overflow:hidden;margin-bottom:7px}.visibility button{border:0;background:white;color:var(--muted);padding:6px 9px;font-size:11px;font-weight:750;cursor:pointer}.visibility button+button{border-left:1px solid #d0d5dd}.visibility button.selected{background:var(--ink);color:white}.note{display:block;width:100%;min-height:58px;border:1px solid #d0d5dd;border-radius:9px;padding:9px;font:inherit;font-size:12px;resize:vertical}.flags{display:flex;gap:6px;flex-wrap:wrap}.flag{border:1px solid #d0d5dd;background:white;color:#475467;border-radius:999px;padding:5px 9px;font-size:11px;cursor:pointer}.flag.active{background:var(--ink);border-color:var(--ink);color:white}.coachnote{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:12px;font-size:12px;color:#475467}.coachnote b{color:var(--ink)}.attbar{display:flex;justify-content:space-between;gap:12px;padding:13px 26px;background:var(--soft);border-bottom:1px solid var(--line);font-size:12px}.attbar b{font-size:14px}.rows{padding:6px 12px}.attrow{display:flex;align-items:center;gap:10px;padding:10px 5px;border-bottom:1px solid var(--line)}.attrow:last-child{border:0}.attplayer{flex:1;min-width:0}.attplayer b{font-size:13px}.status{display:flex;border:1px solid #d0d5dd;border-radius:8px;overflow:hidden}.status button{border:0;background:white;color:#667085;padding:7px 10px;font-size:11px;font-weight:750;cursor:pointer}.status button+button{border-left:1px solid #d0d5dd}.status button.selected{background:var(--ink);color:#fff}.moment{border:1px solid #d0d5dd;background:white;color:#475467;border-radius:8px;padding:7px 9px;font-size:11px;font-weight:750;cursor:pointer}.moment.done{background:var(--soft);color:#156535}.editor{display:none;padding:12px 5px 16px;margin:-1px 0 0;border-bottom:1px solid var(--line)}.editor.show{display:block}.question{font-size:15px;font-weight:750;margin:0 0 9px}.signals{display:flex;gap:7px}.signal{border:1px solid #d0d5dd;background:white;color:#475467;border-radius:8px;padding:7px 10px;font-size:12px;font-weight:750;cursor:pointer}.signal.active{background:var(--ink);border-color:var(--ink);color:white}.savebar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:9px}.savebar small{color:var(--muted);font-size:11px}.primary{border:0;border-radius:8px;background:var(--g);color:white;padding:9px 12px;font-weight:800;cursor:pointer}.primary:disabled{background:#c7d7cb;cursor:not-allowed}.extra{padding:14px 26px 18px;background:var(--soft);border-top:1px solid var(--line)}.extra b{font-size:12px}.extra p{font-size:12px;color:var(--muted);margin:3px 0 9px}.search{width:100%;max-width:360px;border:1px solid #d0d5dd;border-radius:9px;padding:9px 10px;background:white;color:var(--ink)}.footer{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:15px 26px;background:#fcfdfc;font-size:12px;color:var(--muted)}.toast{position:fixed;left:50%;bottom:18px;transform:translate(-50%,150%);transition:transform .2s;background:var(--ink);color:white;border-radius:8px;padding:10px 13px;font-size:12px;font-weight:750;z-index:10}.toast.show{transform:translate(-50%,0)}@media(max-width:620px){.page{padding:15px 10px 40px}.head,.section,.attbar,.extra,.footer{padding-left:16px;padding-right:16px}.sessionbar h1{font-size:21px}.picker{position:fixed;top:55px;right:12px;width:calc(100vw - 24px);max-height:calc(100vh - 72px);overflow:auto}.detail{padding-left:4px}.attrow{flex-wrap:wrap}.attplayer{min-width:140px}.moment{margin-left:auto}}
-</style></head><body><main class="page"><div class="brand">Mastery <span>/ coach sessions</span></div><section class="shell"><header class="head"><div class="sessionbar"><div><div class="date" id="date">Tue 23 Sep</div><h1 id="session-name">Development U9–U12</h1><div class="place" id="place">Greenhill Road · 5:45pm</div></div><div class="picker-wrap"><button class="picker-trigger" onclick="togglePicker(event)" aria-label="Change session"><span class="dots"><i class="current"></i><i class="ready"></i><i class="ready"></i><i class="future"></i><i class="future"></i></span>⌄</button><div class="picker" id="picker"><div class="picktop"><b>23–28 September</b><span><button>‹ week</button><button>next ›</button></span></div><div class="day"><div class="daylabel">Tuesday · 23 Sep</div><button class="pick active" onclick="choose(event,'Tue 23 Sep','Development U9–U12','Greenhill Road · 5:45pm')"><time>5:45pm</time><span><b>Development U9–U12</b><small>Greenhill Road</small></span><span class="state current">Plan needed</span></button></div><div class="day"><div class="daylabel">Thursday · 25 Sep</div><button class="pick" onclick="choose(event,'Thu 25 Sep','Development U9–U12','Parafield Gardens · 5:30pm')"><time>5:30pm</time><span><b>Development U9–U12</b><small>Parafield Gardens</small></span><span class="state ready">Ready</span></button><button class="pick" onclick="choose(event,'Thu 25 Sep','Development U13–U16','Parafield Gardens · 6:30pm')"><time>6:30pm</time><span><b>Development U13–U16</b><small>Parafield Gardens</small></span><span class="state">Plan needed</span></button></div><div class="day"><div class="daylabel">Saturday · 27 Sep</div><button class="pick" onclick="choose(event,'Sat 27 Sep','Development U9–U12','Greenhill Road · 9:00am')"><time>9:00am</time><span><b>Development U9–U12</b><small>Greenhill Road</small></span><span class="state">Upcoming</span></button></div></div></div></div><div class="skillstrip"><span>Shared weekly skill <b>· First touch</b></span><span class="skillpill">Plan → coach → reflect</span></div><nav class="tabs"><button class="tab active" data-view="plan">Plan session</button><button class="tab" data-view="attendance">Attendance</button></nav></header><section class="view active" id="plan"><div class="section"><h2>Required drills</h2><button class="drill" onclick="notice('Wall passes under pressure details opened.')"><span class="num">1</span><b>Wall passes under pressure</b><span class="chev">›</span></button><button class="drill" onclick="notice('Receive, scan, turn details opened.')"><span class="num">2</span><b>Receive, scan, turn</b><span class="chev">›</span></button><button class="drill" onclick="notice('First touch into space details opened.')"><span class="num">3</span><b>First touch into space</b><span class="chev">›</span></button></div><div class="section"><h2>Today’s focus <span class="tag">Required · shared with families</span></h2><p class="hint">What does this session need from you and your players?</p><textarea class="focus">Today we're working on receiving side-on under pressure — encourage your child to keep trying, even if the first touch doesn't go to plan.</textarea></div><div class="section"><h2>Your group <span class="tag">14 players</span></h2><p class="groupstatus">Choose two players to watch today. <b id="watch-progress">1 of 2 selected</b></p><div class="controls"><div class="sort"><button class="smallbtn" onclick="document.getElementById('sortmenu').classList.toggle('show')">↕ <span id="sortlabel">Needs attention</span></button><div class="sortmenu" id="sortmenu"><button onclick="sortRoster('Needs attention')">Needs attention</button><button onclick="sortRoster('Strongest recently')">Strongest recently</button><button onclick="sortRoster('Attendance')">Attendance</button><button onclick="sortRoster('A–Z')">A–Z</button></div></div><button class="chip active" data-filter="All">All · 14</button><button class="chip" data-filter="Check-in">Needs a check-in · 2</button><button class="chip" data-filter="Strong">Strong recently · 4</button><button class="chip" data-filter="Watching">Watching · 1</button><button class="chip" data-filter="New">New to group · 1</button></div><div class="roster" id="roster"></div></div><div class="section"><h2>Feedback about you <span class="tag">Info only</span></h2><div class="coachnote"><b>4.8 ★</b> average from 6 families<br><span>Encouraging · Clear communicator · Patient</span><br><em>“Always encourages Maya to keep trying, even after a mistake.”</em></div></div></section><section class="view" id="attendance"><div class="attbar"><span><b>14 players expected</b><br>Development U9–U12</span><span id="moments-count">0 of 2 moments recorded</span></div><div class="rows" id="attendance-rows"></div><div class="extra"><b>Not in your usual group?</b><p>Search to add a player who joined this session.</p><input class="search" placeholder="Search by first name…" oninput="notice(this.value ? 'Matches: Leo Turner · Isla Grant' : '')"></div></section><footer class="footer"><span id="footer-copy"><b>Still needed:</b> one more player to watch.</span><button class="primary" id="submit" disabled onclick="notice('Plan review saved.')">Mark plan reviewed</button></footer></section></main><div class="toast" id="toast"></div><script>
-const people=[['Noah Jones','NJ','b','Check-in','58% attendance · missed last 2 sessions','n'],['Maya Williams','MW','','','92% attendance · last: Strong','s'],['Oliver Brown','OB','c','Welcome back','83% attendance · settled in',''],['Priya Lal','PL','d','','88% attendance · needs time before receiving','n'],['Leo Turner','LT','e','New','Joined this week · no history yet',''],['Jamal Harris','JH','f','','75% attendance · last: Needs support','n'],['Zara Khan','ZK','b','','100% attendance · last: Strong','s'],['Sienna Hall','SH','c','','92% attendance · last: Strong','s'],['Amelia Lewis','AL','d','','100% attendance · last: Strong','s'],['Grace Wood','GW','e','','83% attendance · steady',''],['Mason Reed','MR','f','','75% attendance · missed last session',''],['Harper Bell','HB','b','','92% attendance · last: Strong','s'],['Ethan Cole','EC','c','','83% attendance · settled in',''],['Isla Grant','IG','d','New','Joined this week · no history yet','']];let open='',watching=new Set(['Maya Williams']),filter='All',sortBy='Needs attention',moment={},activePerson='',signal='';
-function renderRoster(){let a=[...people];if(filter==='Check-in')a=a.filter(p=>p[3]==='Check-in');if(filter==='Strong')a=a.filter(p=>p[5]==='s');if(filter==='Watching')a=a.filter(p=>watching.has(p[0]));if(filter==='New')a=a.filter(p=>p[3]==='New');if(sortBy==='A–Z')a.sort((x,y)=>x[0].localeCompare(y[0]));if(sortBy==='Strongest recently')a.sort((x,y)=>(y[5]==='s')-(x[5]==='s'));if(sortBy==='Attendance')a.sort((x,y)=>parseInt(y[4])-parseInt(x[4]));document.getElementById('roster').innerHTML=a.map((p,i)=>row(p,i)).join('');}
-function row(p,i){const name=p[0],o=open===name,w=watching.has(name),history=['','s','','n','a'].map(x=>'<i class="'+x+'"></i>').join('');return '<div class="grow '+(o?'open':'')+'" onclick="openPlayer(\''+name+'\')"><div class="avatar '+p[2]+'">'+p[1]+'</div><div class="player"><b>'+name+(p[3]?'<span class="ptag">'+p[3]+'</span>':'')+'</b><div class="meta">'+p[4]+'</div></div><button class="star '+(w?'on':'')+'" onclick="toggleWatch(event,\''+name+'\')" aria-label="Watch '+name+'">'+(w?'★':'☆')+'</button></div><div class="detail '+(o?'show':'')+'"><div class="detaillabel">Recent sessions</div><div class="history">'+history+'</div><div class="skills"><div class="skill"><b>First touch</b><span>• • ● •</span></div><div class="skill"><b>Scanning</b><span>• ● • •</span></div></div><div class="detaillabel">Notes on '+name+'</div><div class="visibility"><button class="selected" onclick="toggleVis(event,this)">Private</button><button onclick="toggleVis(event,this)">Share with family</button></div><textarea class="note" onclick="event.stopPropagation()" placeholder="Write a useful note about '+name+'."></textarea><div class="detaillabel">Quick flags</div><div class="flags"><button class="flag" data-group="move" onclick="toggleFlag(event,this)">Move up</button><button class="flag" data-group="move" onclick="toggleFlag(event,this)">Move down</button><button class="flag" onclick="toggleFlag(event,this)">Offer Elite trial</button><button class="flag" onclick="toggleFlag(event,this)">Neurodivergent</button><button class="flag" onclick="toggleFlag(event,this)">Behaviour support</button><button class="flag" onclick="toggleFlag(event,this)">Uniform reminder today</button></div></div>'}
-function openPlayer(n){open=open===n?'':n;renderRoster()}function toggleWatch(e,n){e.stopPropagation();if(!watching.has(n)&&watching.size===2){notice('You already have two players being watched.');return}watching.has(n)?watching.delete(n):watching.add(n);document.getElementById('watch-progress').textContent=watching.size+' of 2 selected';document.getElementById('submit').disabled=watching.size!==2;document.getElementById('footer-copy').innerHTML=watching.size===2?'<b>Ready:</b> focus set, two players chosen.':'<b>Still needed:</b> one more player to watch.';renderRoster()}function toggleVis(e,b){e.stopPropagation();b.parentElement.querySelectorAll('button').forEach(x=>x.classList.remove('selected'));b.classList.add('selected')}function toggleFlag(e,b){e.stopPropagation();if(b.dataset.group)b.parentElement.querySelectorAll('.flag').forEach(x=>{if(x!==b&&x.dataset.group)x.classList.remove('active')});b.classList.toggle('active')}document.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{filter=b.dataset.filter;document.querySelectorAll('.chip').forEach(x=>x.classList.toggle('active',x===b));renderRoster()});function sortRoster(v){sortBy=v;document.getElementById('sortlabel').textContent=v;document.getElementById('sortmenu').classList.remove('show');renderRoster()}
-function renderAttendance(){document.getElementById('attendance-rows').innerHTML=people.map((p,i)=>{let n=p[0],done=moment[n]?.done;return '<div class="attrow"><div class="avatar '+p[2]+'">'+p[1]+'</div><div class="attplayer"><b>'+n+'</b><div class="history"><i></i><i class="s"></i><i></i><i class="n"></i></div></div><div class="status"><button class="selected" onclick="status(this)">Here</button><button onclick="status(this)">Away</button></div><button class="moment '+(done?'done':'')+'" onclick="openMoment(\''+n+'\')">'+(done?'✓ Saved':'+ Note')+'</button></div><div class="editor '+(activePerson===n?'show':'')+'" id="edit-'+i+'"><div class="question">What did you notice about '+n+'?</div><div class="signals"><button class="signal '+(signal==='Strong'?'active':'')+'" onclick="pickSignal(this,&quot;Strong&quot;)">Strong</button><button class="signal '+(signal==='Needs support'?'active':'')+'" onclick="pickSignal(this,&quot;Needs support&quot;)">Needs support</button></div><textarea class="note" id="moment-note" oninput="enableSave()" placeholder="Write a short, specific note."></textarea><div class="savebar"><small>Choose a signal and add a note.</small><button class="primary" id="save-moment" disabled onclick="saveMoment()">Save</button></div></div>'}).join('')}
-function status(b){b.parentElement.querySelectorAll('button').forEach(x=>x.classList.remove('selected'));b.classList.add('selected')}function openMoment(n){activePerson=n;signal='';renderAttendance();document.querySelector('#attendance .editor.show')?.scrollIntoView({behavior:'smooth',block:'center'})}function pickSignal(b,s){signal=s;b.parentElement.querySelectorAll('button').forEach(x=>x.classList.remove('active'));b.classList.add('active');enableSave()}function enableSave(){let q=document.getElementById('moment-note');if(q)document.getElementById('save-moment').disabled=!(signal&&q.value.trim().length>=8)}function saveMoment(){moment[activePerson]={done:true};activePerson='';let count=Object.keys(moment).length;document.getElementById('moments-count').textContent=count+' of 2 moments recorded';document.getElementById('submit').disabled=count<2;document.getElementById('footer-copy').innerHTML=count<2?'<b>Still needed:</b> '+(2-count)+' player moment'+(count?'':'s')+' with a signal and note.':'<b>Ready:</b> attendance and two moments recorded.';document.getElementById('submit').textContent=count>=2?'Submit attendance':'Submit attendance';renderAttendance();notice('Moment saved for '+activePerson+'.')}
-document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{let v=t.dataset.view;document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===t));document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id===v));let attendance=v==='attendance';document.getElementById('submit').textContent=attendance?'Submit attendance':'Mark plan reviewed';document.getElementById('footer-copy').innerHTML=attendance?'<b>Still needed:</b> two player moments with a signal and note.':'<b>Still needed:</b> one more player to watch.'});function togglePicker(e){e.stopPropagation();picker.classList.toggle('show')}function choose(e,d,n,p){e.stopPropagation();date.textContent=d;document.getElementById('session-name').textContent=n;place.textContent=p;document.querySelectorAll('.pick').forEach(x=>x.classList.remove('active'));e.currentTarget.classList.add('active');picker.classList.remove('show');notice('Session changed to '+d+'.')}document.addEventListener('click',e=>{if(!e.target.closest('.picker-wrap'))picker.classList.remove('show')});function notice(m){if(!m)return;let t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(window.t);window.t=setTimeout(()=>t.classList.remove('show'),2200)}renderRoster();renderAttendance();
-</script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mastery — Coach · Plan & attendance</title>
+<style>
+:root{--g:#1ca83e;--ink:#172235;--muted:#667085;--line:#e5e7eb;--soft:#f8f9f7;--paper:#fff}
+*{box-sizing:border-box}
+body{margin:0;background:#f7f8f6;color:var(--ink);font:14px/1.45 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.page{max-width:980px;margin:auto;padding:30px 22px 60px}
+.brand{font-weight:800;font-size:18px;letter-spacing:-.03em;margin-bottom:22px}
+.brand span{font-weight:500;color:#98a2b3}
+.shell{background:white;border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.shell-head{padding:24px 26px 0;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+
+/* --- session selector box (top of every tab) --- */
+.session-head-wrap{position:relative;margin-top:14px}
+.session-box{display:block;width:100%;text-align:left;font:inherit;color:inherit;border:1.5px dashed #d0d5dd;border-radius:14px;background:var(--soft);padding:13px 15px 15px;cursor:pointer;transition:border-color .15s,background .15s,box-shadow .15s}
+.session-box:hover{border-color:#98a2b3;background:#f2f3f0;box-shadow:0 1px 0 rgba(16,24,40,.04)}
+.sb-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.sb-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex:0 0 auto}
+.sb-hint{font-size:11px;color:var(--muted);font-weight:700;display:inline-flex;align-items:center;gap:5px}
+.sb-name{display:block;font-size:24px;font-weight:800;letter-spacing:-.04em;line-height:1.12;margin:9px 0 3px}
+.sb-place{display:block;color:var(--muted);font-size:13px}
+.tiny-dots{display:flex;gap:4px;align-items:center}
+.tiny-dots i{width:6px;height:6px;border-radius:50%;background:#d0d5dd;display:block}
+.tiny-dots i.done{background:var(--g)}
+.tiny-dots i.active{width:8px;height:8px;background:var(--ink)}
+.tiny-dots i.future{border:1px solid #c5cbd2;background:white}
+.picker{position:absolute;right:0;top:calc(100% + 8px);width:390px;z-index:5;background:var(--paper);border-radius:12px;box-shadow:0 12px 30px rgba(16,24,40,.13);padding:14px 0;display:none}
+.picker.show{display:block}
+.picker-top{display:flex;justify-content:space-between;align-items:center;padding:0 14px 10px}
+.picker-top b{font-size:13px}
+.picker-top div{display:flex;gap:7px}
+.picker-top button{border:0;background:transparent;color:var(--muted);font-size:11px;cursor:pointer;padding:3px}
+.week{border-top:1px solid var(--line)}
+.week:first-of-type{border-top:0}
+.week-label{font-size:10px;color:#98a2b3;font-weight:800;text-transform:uppercase;letter-spacing:.06em;padding:11px 14px 5px}
+.session{width:100%;display:flex;align-items:center;gap:10px;text-align:left;border:0;background:white;padding:9px 14px;cursor:pointer;color:var(--ink)}
+.session:hover{background:var(--soft)}
+.session.active{background:#fbfcfb}
+.session-time{width:44px;font-size:11px;color:var(--muted);flex:0 0 auto}
+.session-main{flex:1}
+.session-main b{display:block;font-size:12.5px;line-height:1.2}
+.session-main span{display:block;color:var(--muted);font-size:10.5px;margin-top:2px}
+.session-state{display:flex;align-items:center;gap:5px;font-size:10.5px;color:var(--muted);white-space:nowrap}
+.state-dot{width:6px;height:6px;border-radius:50%;background:#d0d5dd}
+.state-dot.ready{background:var(--g)}
+.state-dot.selected{background:var(--ink)}
+.chev{color:#98a2b3;font-size:16px}
+
+/* --- shared skill pill (sits outside the tabs, applies to whichever session is selected) --- */
+.skill-strip{display:flex;align-items:center;gap:8px;margin-top:14px;padding-bottom:16px}
+.skill-pill{display:inline-flex;align-items:baseline;gap:5px;border:1px solid var(--line);border-radius:999px;background:var(--soft);padding:4px 11px;font-size:11.5px;color:var(--muted);font-weight:600;white-space:nowrap}
+.skill-pill b{color:var(--ink);font-weight:750}
+
+.tabs{display:flex;gap:4px;margin-top:0}
+.tab{border:0;background:transparent;color:var(--muted);padding:10px 12px;border-bottom:2px solid transparent;font-size:13px;font-weight:750;cursor:pointer}
+.tab.active{color:var(--ink);border-bottom-color:var(--ink)}
+.content{min-height:460px}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+#panel-attendance .row{position:relative}
+@media(max-width:600px){
+  .page{padding:16px 10px}
+  .shell-head{padding-left:16px;padding-right:16px}
+  .sb-name{font-size:21px}
+  .session-box{padding:12px 13px 13px}
+  .picker{position:fixed;top:72px;right:12px;width:calc(100vw - 24px);max-height:calc(100vh - 90px);overflow:auto;border:1px solid var(--line);box-shadow:0 16px 38px rgba(16,24,40,.16)}
+}
+/* --- pre-session planner (plan tab) --- */
+.head{padding:24px 26px 18px;border-bottom:1px solid var(--line)}
+.eyebrow{color:var(--muted);font-weight:800;text-transform:uppercase;font-size:11px;letter-spacing:.1em}
+.top{display:flex;justify-content:space-between;gap:20px;align-items:start}.top h1{font-size:24px;letter-spacing:-.04em;line-height:1.15;margin:8px 0 5px}.top p{margin:0;color:var(--muted);font-size:13px}
+.skill{padding:9px 12px;border-radius:9px;background:var(--soft);border:1px solid var(--line);color:var(--ink);font-weight:750;font-size:13px;white-space:nowrap}.skill small{display:block;color:var(--muted);font-weight:600;margin-top:1px}
+.tracker{display:flex;align-items:center;gap:10px;margin-top:16px;font-size:12.5px;color:var(--muted);flex-wrap:wrap}
+.tracker b{color:var(--ink)}.tracker-dots{display:flex;gap:5px;margin-left:auto}
+.tdot{width:8px;height:8px;border-radius:50%;background:#d0d5dd}.tdot.done{background:var(--ink)}
+.snapshot{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line)}
+.stat{background:var(--paper);padding:14px 16px}
+.stat b{display:block;font-size:19px;letter-spacing:-.02em}
+.stat span{color:var(--muted);font-size:11.5px}
+.section{padding:20px 26px;border-bottom:1px solid var(--line)}
+.section:last-of-type{border-bottom:0}
+.section-label{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:10px}
+.section-label h2{margin:0;font-size:15.5px;letter-spacing:-.02em}
+.tag{font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#98a2b3;border:1px solid var(--line);border-radius:5px;padding:2px 6px}
+.drills{display:grid;gap:8px}
+.drill{display:flex;align-items:center;gap:12px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--soft);cursor:pointer}
+.drill:hover{background:#f2f3f0}
+.drill-index{width:20px;height:20px;border-radius:50%;background:white;border:1px solid #d0d5dd;display:grid;place-items:center;font-size:10.5px;font-weight:800;color:#475467;flex:0 0 auto}
+.drill-name{font-weight:700;letter-spacing:-.01em;font-size:13.5px}
+.drill-meta{color:var(--muted);font-size:11.5px;margin-top:1px}
+.drill-chevron{margin-left:auto;color:#98a2b3;font-size:17px;flex:0 0 auto}
+.section-hint{margin:-4px 0 10px;color:var(--muted);font-size:12px;line-height:1.5}
+textarea.intent{display:block;width:100%;min-height:110px;border:1px solid #d0d5dd;border-radius:9px;padding:10px 11px;resize:vertical;font:inherit;font-size:13.5px;color:var(--ink);outline:0;background:white}
+textarea.intent:focus{border-color:#9aa4b2}
+.group-status{margin:-2px 0 12px;font-size:12.5px;color:var(--muted);line-height:1.5}
+.group-status b{color:var(--ink)}
+.control-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.sort-control{position:relative}
+.sort-btn{border:1px solid #d0d5dd;background:white;border-radius:8px;padding:6px 11px;font-size:12px;color:#475467;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.sort-btn svg{width:13px;height:13px}
+.sort-popover{position:absolute;top:38px;left:0;z-index:5;width:190px;background:white;border:1px solid var(--line);border-radius:10px;box-shadow:0 12px 30px rgba(16,24,40,.13);padding:5px;display:none}
+.sort-popover.show{display:block}
+.sort-popover button{display:block;width:100%;text-align:left;border:0;background:white;padding:8px 9px;border-radius:6px;font-size:12px;color:#344054;cursor:pointer}
+.sort-popover button.active{background:var(--soft);font-weight:700}
+.sort-popover button:hover{background:#f7f8f6}
+.filter-row{display:flex;gap:7px;flex-wrap:wrap}
+.chip-btn{border:1px solid #d0d5dd;background:white;border-radius:999px;padding:6px 11px;font-size:12px;color:#475467;cursor:pointer}
+.chip-btn.active{border-color:var(--ink);background:var(--ink);color:white}
+.control-divider{height:1px;background:var(--line);margin:0 0 4px}
+.roster{display:flex;flex-direction:column}
+.groster-row{display:flex;align-items:flex-start;gap:11px;padding:11px 4px;border-bottom:1px solid var(--line);cursor:pointer}
+.groster-row:last-child{border-bottom:0}
+.groster-row:hover{background:#fbfdfb}
+.groster-row.open{background:#fbfefb}
+.avatar{width:33px;height:33px;border-radius:50%;display:grid;place-items:center;background:#1f5f7a;color:white;font-weight:800;font-size:10px;flex:0 0 auto;margin-top:1px}
+.avatar.b{background:#7a4a1f}.avatar.c{background:#5b1f7a}.avatar.d{background:#7a1f4a}.avatar.e{background:#3f6b4a}
+.avatar.f{background:#4a5568}.avatar.g{background:#8a5a2b}.avatar.h{background:#2b6a5a}.avatar.i{background:#6a2b5a}
+.gtextblock{min-width:0;flex:1 1 auto}
+.gname-row{display:flex;align-items:center;gap:6px;flex-wrap:wrap;row-gap:3px}
+.gname{font-weight:780;font-size:13px;letter-spacing:-.01em}
+.gtag{font-size:10px;font-weight:800;padding:1.5px 5px;border-radius:4px;border:1px solid var(--line);color:#475467;background:var(--soft);flex:0 0 auto;white-space:nowrap}
+.gmeta{color:var(--muted);font-size:11.5px;margin-top:3px}
+.watch-toggle{width:29px;height:29px;border-radius:50%;border:1px solid #d0d5dd;background:white;color:#98a2b3;font-size:14px;cursor:pointer;flex:0 0 auto;display:grid;place-items:center;margin-top:1px}
+.watch-toggle.on{border-color:var(--ink);background:var(--ink);color:white}
+.gdetail{display:none;padding:2px 4px 16px 44px}
+.gdetail.show{display:block}
+.gblock{margin-top:13px}
+.gblock:first-child{margin-top:11px}
+.gblock-label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:#98a2b3;margin-bottom:7px}
+.ghistory-full{display:flex;gap:5px;overflow-x:auto;padding-bottom:2px}
+.ghistory-full i{width:7px;height:7px;border-radius:50%;display:block;background:#c5cbd2;flex:0 0 auto}
+.ghistory-full i.s{background:var(--g)}.ghistory-full i.n{background:#f0a229}.ghistory-full i.a{background:white;border:1px solid #98a2b3}
+.skills-wrap{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+.skill-chip{border:1px solid var(--line);border-radius:9px;background:var(--soft);padding:8px 9px;min-width:114px;flex:0 0 auto}
+.skill-chip-name{font-size:11px;font-weight:700;margin-bottom:5px}
+.skill-spark{display:flex;gap:3px;margin-bottom:5px}
+.skill-spark i{width:6px;height:6px;border-radius:50%;background:#c5cbd2;display:block}
+.skill-spark i.s{background:var(--g)}.skill-spark i.n{background:#f0a229}
+.skill-chip-meta{font-size:10px;color:var(--muted);line-height:1.4}
+.checkin-lead{margin:0 0 9px;font-size:12.5px;color:#475467;font-weight:600}
+.note-visibility{display:flex;border:1px solid #d0d5dd;border-radius:8px;overflow:hidden;width:max-content;margin-bottom:8px}
+.note-visibility button{border:0;background:white;padding:6px 10px;font-size:11px;font-weight:700;color:#667085}
+.note-visibility button+button{border-left:1px solid #d0d5dd}
+.note-visibility button.selected{background:var(--ink);color:white}
+textarea.private-note{display:block;width:100%;min-height:50px;border:1px solid #d0d5dd;border-radius:9px;padding:9px 10px;resize:vertical;font:inherit;font-size:12px;color:var(--ink);outline:0;background:white}
+textarea.private-note:focus{border-color:#9aa4b2}
+.note-hint{font-size:10.5px;color:#98a2b3;margin-top:5px}
+.flag-row{display:flex;gap:6px;flex-wrap:wrap}
+.flagpill{border:1px solid #d0d5dd;background:white;border-radius:999px;padding:5px 10px;font-size:11px;color:#475467;cursor:pointer}
+.flagpill.active{border-color:var(--ink);background:var(--ink);color:white}
+.rating-row{display:flex;align-items:baseline;gap:8px;margin-bottom:12px}
+.rating-big{font-size:20px;font-weight:800;letter-spacing:-.02em}
+.rating-sub{color:var(--muted);font-size:12px}
+.tagcloud{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.fbtag{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:5px 10px;font-size:11px;color:#475467}
+.fbtag.watch{background:white;border-style:dashed}
+.quotes{display:grid;gap:8px;margin-bottom:9px}
+.quote{font-size:12px;color:#475467;font-style:italic}
+.quote small{display:block;color:var(--muted);font-size:10.5px;font-style:normal;margin-top:2px}
+.fb-note{font-size:10px;color:#98a2b3}
+.footer{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 26px;background:#fcfdfc;flex-wrap:wrap}
+.footer p{margin:0;color:var(--muted);font-size:12px}.footer p b{color:var(--ink)}
+.submit{border:0;border-radius:8px;padding:10px 15px;background:var(--g);color:white;font-weight:800;cursor:pointer}
+.submit:disabled{background:#c7d7cb;cursor:not-allowed}
+@media(max-width:700px){.snapshot{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.head,.section,.footer{padding-left:16px;padding-right:16px}.top{display:block}.skill{display:inline-block;margin-top:14px}.gdetail{padding-left:4px}}
+
+/* --- attendance close-out (attendance tab) --- */
+.head{padding:24px 26px 20px;border-bottom:1px solid var(--line)}
+.eyebrow{color:var(--muted);font-weight:800;text-transform:uppercase;font-size:11px;letter-spacing:.1em}
+.top{display:flex;justify-content:space-between;gap:20px;align-items:start}.top h1{font-size:24px;letter-spacing:-.04em;line-height:1.15;margin:8px 0 5px}.top p{margin:0;color:var(--muted)}
+.skill{padding:9px 12px;border-radius:9px;background:var(--soft);border:1px solid var(--line);color:var(--ink);font-weight:750;font-size:13px;white-space:nowrap}.skill small{display:block;color:var(--muted);font-weight:600;margin-top:1px}
+.rule{margin-top:16px;padding:12px 14px;border-radius:10px;background:var(--soft);border:1px solid var(--line);color:#475467;font-size:12.5px;line-height:1.5}.rule b{color:var(--ink)}
+.key{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:14px;color:var(--muted);font-size:12px}.key b{color:#475467}
+.dot{width:9px;height:9px;border-radius:50%;display:inline-block;background:#c5cbd2}.dot.strong{background:var(--g)}.dot.support{background:#f0a229}.dot.absent{background:white;border:1px solid #98a2b3}
+.key span{display:inline-flex;gap:5px;align-items:center}
+.summary{display:flex;justify-content:space-between;align-items:center;padding:13px 20px;background:var(--soft);border-bottom:1px solid var(--line);font-size:13px}
+.summary b{font-size:14px}#progress{color:var(--muted);font-weight:750}#progress.done{color:var(--ink)}
+.rows{padding:7px 12px}
+.row{display:flex;align-items:center;gap:12px;min-height:70px;padding:10px 9px;border-bottom:1px solid var(--line);cursor:pointer}
+.row.last{border:0}.row:hover{background:#fbfdfb}.row.open{background:#fbfefb}.row.blocked{cursor:default;opacity:.68}
+.identity{display:flex;align-items:center;gap:11px;min-width:0;flex:1 1 auto;overflow:hidden}
+.a-avatar{width:39px;height:39px;border-radius:50%;display:grid;place-items:center;background:#1f5f7a;color:white;font-weight:800;font-size:11px;flex:0 0 auto}
+.a-avatar.b{background:#7a4a1f}.a-avatar.c{background:#5b1f7a}.a-avatar.d{background:#7a1f4a}.a-avatar.e{background:#3f6b4a}
+.textblock{min-width:0}.name{font-weight:780;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.under{display:flex;align-items:center;gap:9px;margin-top:4px;color:var(--muted);font-size:12px;flex-wrap:wrap}
+.a-tag{padding:2px 6px;border-radius:5px;background:var(--soft);border:1px solid var(--line);color:#475467;font-weight:750;font-size:11px}
+.history{display:flex;gap:4px}.history i{width:7px;height:7px;border-radius:50%;display:block;background:#c5cbd2}
+.history i.s{background:var(--g)}.history i.n{background:#f0a229}.history i.a{background:white;border:1px solid #98a2b3}
+.right{display:flex;align-items:center;gap:8px;flex:0 0 auto}
+.status{display:flex;border:1px solid #d0d5dd;border-radius:8px;overflow:hidden}
+.status button{border:0;background:white;padding:7px 12px;color:#667085;font-size:12px;font-weight:750;min-width:52px}
+.status button+button{border-left:1px solid #d0d5dd}
+.status button.selected{background:var(--ink);color:white}
+.more{width:28px;height:28px;border:0;background:transparent;color:#667085;font-size:20px;line-height:1;cursor:pointer;flex:0 0 auto}
+.editor{display:none;padding:2px 9px 18px;border-top:1px solid var(--line);margin-top:-1px}
+.editor.show{display:block}
+.editor-q{font-size:17px;font-weight:750;letter-spacing:-.015em;margin:14px 0 12px}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.action{border:1px solid #d0d5dd;border-radius:8px;background:white;color:#475467;padding:8px 10px;font-size:12px;font-weight:780;cursor:pointer}
+.action.active{border-color:var(--ink);background:var(--ink);color:white}
+textarea{display:block;width:100%;min-height:64px;border:1px solid #d0d5dd;border-radius:8px;margin-top:10px;padding:9px;resize:vertical;font:inherit;font-size:13px;color:var(--ink);outline:0;background:white}
+textarea:focus{border-color:#9aa4b2}
+.editor-footer{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:11px}
+.editor-footer small{color:var(--muted);font-size:11.5px}
+.save{border:0;border-radius:8px;padding:8px 12px;background:var(--g);color:white;font-weight:800;font-size:12px;cursor:pointer}
+.save:disabled{background:#c7d7cb;cursor:not-allowed}
+.blocked-msg{color:#6b7280;font-size:12.5px;line-height:1.5;margin:14px 0 4px}
+.footer{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:15px 20px;border-top:1px solid var(--line);background:#fcfdfc}
+.footer p{margin:0;color:var(--muted);font-size:12px}.footer p b{color:var(--ink)}
+.submit{border:0;border-radius:8px;padding:10px 14px;background:var(--g);color:white;font-weight:800;cursor:pointer}
+.submit:disabled{background:#c7d7cb;cursor:not-allowed}
+.menu{position:absolute;right:14px;top:51px;z-index:2;width:196px;padding:6px;background:white;border:1px solid var(--line);border-radius:10px;box-shadow:0 12px 30px rgba(16,24,40,.13);display:none}
+.menu.show{display:block}.menu button{display:block;width:100%;text-align:left;border:0;border-radius:6px;padding:8px;background:white;color:#344054;font-size:12px;cursor:pointer}
+.menu button:hover{background:#f7f8f6}.relative{position:relative}
+/* Secondary: add extra player */
+.extra{padding:14px 20px 18px;border-top:1px solid var(--line);background:var(--soft)}
+.extra-label{font-size:12px;color:var(--muted);margin-bottom:8px}
+.extra-label b{color:#475467}
+.search{position:relative;max-width:360px}
+.search input{width:100%;border:1px solid #d0d5dd;background:white;border-radius:9px;padding:9px 12px 9px 32px;font:inherit;font-size:13px;color:var(--ink);outline:0}
+.search input:focus{border-color:#9aa4b2}
+.search svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);width:14px;height:14px;color:#98a2b3}
+.results{margin-top:8px;border:1px solid var(--line);border-radius:9px;background:white;overflow:hidden;display:none;max-width:360px}
+.results.show{display:block}
+.result{display:flex;align-items:center;gap:10px;padding:9px 11px;cursor:pointer;font-size:13px}
+.result:hover{background:var(--soft)}
+.result small{color:var(--muted);display:block;font-size:11px;margin-top:1px}
+.mini-avatar{width:28px;height:28px;border-radius:50%;background:#94a3b8;color:white;display:grid;place-items:center;font-size:10px;font-weight:800;flex:0 0 auto}
+.added-note{margin-top:9px;font-size:12px;color:var(--muted)}
+@media(max-width:620px){.head{padding:19px 16px}.top{display:block}.skill{display:inline-block;margin-top:14px}.name{max-width:120px}.status button{padding:7px 9px;min-width:44px}.summary{padding:12px 16px}.footer{padding:14px 16px}.footer p{max-width:190px}.extra{padding:14px 16px}}
+/* --- refinement pass: preserve the flow; clarify hierarchy and affordance --- */
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid rgba(28,168,62,.32);outline-offset:2px}
+.session-box:focus-visible,.tab:focus-visible{outline-offset:3px}
+.skill-strip{padding:11px 0 15px;margin-top:12px;border-top:1px solid rgba(229,231,235,.72)}
+.skill-pill{padding:5px 11px;background:#f4f7f5}
+.tracker{padding:9px 11px;border:1px solid var(--line);border-radius:9px;background:var(--soft)}
+.tracker-dots{margin-left:4px}
+.snapshot{border-top:1px solid var(--line)}
+.stat{min-height:68px;display:flex;flex-direction:column;justify-content:center}
+.section-label{margin-bottom:12px}
+.drill{transition:background .15s,border-color .15s,transform .15s}.drill:hover{border-color:#cbd5ce;transform:translateY(-1px)}
+.control-row{margin-bottom:10px}.control-divider{margin-top:3px}
+.groster-row{position:relative;border-radius:7px;padding-left:8px;padding-right:8px;transition:background .15s}
+.groster-row:hover{background:#f5faf6}.groster-row.open{background:#f4faf5}
+.gdetail{margin:0 8px 0 0;border-left:2px solid #d9eadd;padding-left:14px}
+.gdetail.show{animation:detail-in .16s ease-out}@keyframes detail-in{from{opacity:.35;transform:translateY(-3px)}to{opacity:1;transform:translateY(0)}}
+.note-visibility{box-shadow:0 1px 0 rgba(16,24,40,.03)}
+.flagpill:hover,.chip-btn:hover,.sort-btn:hover,.watch-toggle:hover,.action:hover,.status button:hover,.more:hover{border-color:#98a2b3;background:#f7f9f7}
+.watch-toggle.on:hover,.chip-btn.active:hover,.action.active:hover,.status button.selected:hover{background:var(--ink);color:white}
+#panel-attendance .summary{position:sticky;top:0;z-index:1;box-shadow:0 4px 8px rgba(16,24,40,.035)}
+.row.open{box-shadow:inset 3px 0 0 var(--ink)}
+.editor{background:#fbfdfb}.editor-q{max-width:420px}
+.extra{background:#f7faf8}.footer{min-height:66px}
+@media(max-width:620px){.tracker{align-items:flex-start}.tracker-dots{width:100%;margin-left:0}.gdetail{margin-right:0;border-left:0;padding-left:4px}.groster-row{padding-left:4px;padding-right:4px}.snapshot{gap:1px}.stat{min-height:62px}.session-box{border-style:solid}.attrow{padding-top:12px;padding-bottom:12px}}
+</style>
+</head>
+<body>
+<main class="page">
+
+  <div class="brand">Mastery <span>/ coach session selector</span></div>
+
+  <section class="shell">
+
+    <header class="shell-head">
+
+      <div class="session-head-wrap">
+        <button class="session-box" onclick="togglePicker(event)">
+          <span class="sb-top">
+            <span class="eyebrow" id="date">Tue 23 Sep</span>
+            <span class="sb-right">
+              <span class="sb-hint">Change session <span>⌄</span></span>
+              <span class="tiny-dots">
+                <i class="active"></i><i class="done"></i><i class="done"></i><i class="future"></i><i class="future"></i><i class="future"></i>
+              </span>
+            </span>
+          </span>
+          <span class="sb-name" id="name">Development U9–U12</span>
+          <span class="sb-place" id="place">Greenhill Road · 5:45pm</span>
+        </button>
+
+        <div class="picker" id="picker">
+          <div class="picker-top">
+            <b>23–28 September</b>
+            <div><button>‹ week</button><button>next ›</button></div>
+          </div>
+          <div class="week">
+            <div class="week-label">Tuesday · 23 Sep</div>
+            <button class="session active" onclick="choose(event,'Tue 23 Sep','Development U9–U12','Greenhill Road · 5:45pm')">
+              <span class="session-time">5:45pm</span>
+              <span class="session-main"><b>Development U9–U12</b><span>Greenhill Road</span></span>
+              <span class="session-state"><i class="state-dot selected"></i> Plan needed</span>
+              <span class="chev">›</span>
+            </button>
+          </div>
+          <div class="week">
+            <div class="week-label">Thursday · 25 Sep</div>
+            <button class="session" onclick="choose(event,'Thu 25 Sep','Development U9–U12','Parafield Gardens · 5:30pm')">
+              <span class="session-time">5:30pm</span>
+              <span class="session-main"><b>Development U9–U12</b><span>Parafield Gardens</span></span>
+              <span class="session-state"><i class="state-dot ready"></i> Ready</span>
+              <span class="chev">›</span>
+            </button>
+            <button class="session" onclick="choose(event,'Thu 25 Sep','Development U13–U16','Parafield Gardens · 6:30pm')">
+              <span class="session-time">6:30pm</span>
+              <span class="session-main"><b>Development U13–U16</b><span>Parafield Gardens</span></span>
+              <span class="session-state"><i class="state-dot"></i> Plan needed</span>
+              <span class="chev">›</span>
+            </button>
+          </div>
+          <div class="week">
+            <div class="week-label">Saturday · 27 Sep</div>
+            <button class="session" onclick="choose(event,'Sat 27 Sep','Development U9–U12','Greenhill Road · 9:00am')">
+              <span class="session-time">9:00am</span>
+              <span class="session-main"><b>Development U9–U12</b><span>Greenhill Road</span></span>
+              <span class="session-state"><i class="state-dot"></i> Upcoming</span>
+              <span class="chev">›</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-strip">
+        <span class="skill-pill"><b>First touch</b> · this week&rsquo;s skill</span>
+      </div>
+
+      <div class="tabs">
+        <button class="tab active" data-tab="plan" onclick="switchTab('plan')">Plan session</button>
+        <button class="tab" data-tab="attendance" onclick="switchTab('attendance')">Attendance</button>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <section class="tab-panel active" id="panel-plan">
+        <header class="head">
+            <div class="tracker"><span>Two things need your input:</span> <b id="tracker-count">1 of 2 done</b><div class="tracker-dots"><span class="tdot done"></span><span class="tdot" id="tdot2"></span></div></div>
+          </header>
+
+          <div class="snapshot">
+            <div class="stat"><b>14</b><span>Players in your group</span></div>
+            <div class="stat"><b>1 of 2</b><span>Watch players set</span></div>
+            <div class="stat"><b>2</b><span>Recent absences to consider</span></div>
+            <div class="stat"><b>1</b><span>New to your group</span></div>
+          </div>
+
+          <section class="section">
+            <div class="section-label"><h2>Required drills</h2></div>
+            <div class="drills">
+              <div class="drill"><span class="drill-index">1</span><div><div class="drill-name">Wall passes under pressure</div><div class="drill-meta">Warm-up · 8 min</div></div><span class="drill-chevron">›</span></div>
+              <div class="drill"><span class="drill-index">2</span><div><div class="drill-name">Receive, scan, turn</div><div class="drill-meta">Core · 15 min</div></div><span class="drill-chevron">›</span></div>
+              <div class="drill"><span class="drill-index">3</span><div><div class="drill-name">First touch into space, small-sided game</div><div class="drill-meta">Applied · 15 min</div></div><span class="drill-chevron">›</span></div>
+            </div>
+          </section>
+
+          <!-- Reframed: not "intention" — a concrete pre-reflection, shared with families -->
+          <section class="section">
+            <div class="section-label"><h2>Today's focus</h2><span class="tag">Required</span></div>
+            <p class="section-hint">What does this session need from you and your players? Write it once — your families see it too.</p>
+            <textarea class="intent" placeholder="e.g. Today we're working on receiving side-on under pressure. Encourage your child to keep trying, even if the first touch doesn't go to plan.">Today we're working on receiving side-on under pressure — encourage your child to keep trying, even if the first touch doesn't go to plan.</textarea>
+          </section>
+
+          <section class="section">
+            <div class="section-label"><h2>Your group</h2><span class="tag">14 players</span></div>
+            <div class="control-row">
+              <div class="sort-control">
+                <button class="sort-btn" onclick="toggleSort(event)">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M7 4v16M7 20l-3-3M7 20l3-3M17 20V4M17 4l-3 3M17 4l3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span id="sort-label">Sort: Needs attention</span>
+                </button>
+                <div class="sort-popover" id="sort-popover">
+                  <button class="active" onclick="setSort(this,'Needs attention')">Needs attention</button>
+                  <button onclick="setSort(this,'Strongest recently')">Strongest recently</button>
+                  <button onclick="setSort(this,'Attendance')">Attendance</button>
+                  <button onclick="setSort(this,'A–Z')">A–Z</button>
+                </div>
+              </div>
+            </div>
+            <div class="control-row filter-row">
+              <button class="chip-btn active">All · 14</button>
+              <button class="chip-btn">Needs a check-in · 2</button>
+              <button class="chip-btn">Strong recently · 4</button>
+              <button class="chip-btn">Watching · 1</button>
+              <button class="chip-btn">New to your group · 1</button>
+            </div>
+            <div class="control-divider"></div>
+
+            <div class="roster">
+
+              <!-- Noah — check-in fact merged into Notes -->
+              <div class="groster-row open" data-person="Noah">
+                <div class="avatar b">NJ</div>
+                <div class="gtextblock"><div class="gname-row"><span class="gname">Noah Jones</span><span class="gtag">Check-in</span></div><div class="gmeta">58% attendance · missed last 2 sessions</div></div>
+                <button class="watch-toggle" onclick="toggleWatch(event,this)">☆</button>
+              </div>
+              <div class="gdetail show" id="gdetail-Noah">
+                <div class="gblock">
+                  <div class="gblock-label">Recent sessions</div>
+                  <div class="ghistory-full"><i class="a"></i><i class="a"></i><i></i><i class="n"></i><i></i></div>
+                  <div class="skills-wrap"><div class="skill-chip"><div class="skill-chip-name">First touch</div><div class="skill-spark"><i></i><i class="n"></i></div><div class="skill-chip-meta">Needs support · 4wks</div></div><div class="skill-chip"><div class="skill-chip-name">Receiving</div><div class="skill-spark"><i class="n"></i></div><div class="skill-chip-meta">Needs support · 7wks</div></div></div>
+                </div>
+                <div class="gblock">
+                  <div class="gblock-label">Notes on Noah</div>
+                  <p class="checkin-lead">Noah has missed the last two sessions — a private reminder or a note to his family below.</p>
+                  <div class="note-visibility"><button class="selected">Private</button><button>Share with family</button></div>
+                  <textarea class="private-note" placeholder="Write a note — private, or shared with his family."></textarea>
+                  <div class="note-hint">Private notes are only visible to you.</div>
+                </div>
+                <div class="gblock"><div class="gblock-label">Quick flags</div><div class="flag-row"><button class="flagpill" data-group="move" onclick="toggleFlag(this)">Move up</button><button class="flagpill" data-group="move" onclick="toggleFlag(this)">Move down</button><button class="flagpill" onclick="toggleFlag(this)">Offer Elite trial</button><button class="flagpill" onclick="toggleFlag(this)">Neurodivergent</button><button class="flagpill" onclick="toggleFlag(this)">Behaviour support</button><button class="flagpill" onclick="toggleFlag(this)">Uniform reminder today</button></div></div>
+              </div>
+
+              <!-- Oliver — same merged pattern -->
+              <div class="groster-row" data-person="Oliver">
+                <div class="avatar f">OC</div>
+                <div class="gtextblock"><div class="gname-row"><span class="gname">Oliver Chen</span><span class="gtag">Check-in</span></div><div class="gmeta">45% attendance · missed last 3 sessions</div></div>
+                <button class="watch-toggle" onclick="toggleWatch(event,this)">☆</button>
+              </div>
+              <div class="gdetail" id="gdetail-Oliver">
+                <div class="gblock"><div class="gblock-label">Recent sessions</div><div class="ghistory-full"><i class="a"></i><i class="a"></i><i class="a"></i><i></i><i></i></div></div>
+                <div class="gblock">
+                  <div class="gblock-label">Notes on Oliver</div>
+                  <p class="checkin-lead">Oliver has missed the last three sessions — a private reminder or a note to his family below.</p>
+                  <div class="note-visibility"><button class="selected">Private</button><button>Share with family</button></div>
+                  <textarea class="private-note" placeholder="Write a note — private, or shared with his family."></textarea>
+                  <div class="note-hint">Private notes are only visible to you.</div>
+                </div>
+                <div class="gblock"><div class="gblock-label">Quick flags</div><div class="flag-row"><button class="flagpill" data-group="move" onclick="toggleFlag(this)">Move up</button><button class="flagpill" data-group="move" onclick="toggleFlag(this)">Move down</button><button class="flagpill" onclick="toggleFlag(this)">Offer Elite trial</button><button class="flagpill" onclick="toggleFlag(this)">Neurodivergent</button><button class="flagpill" onclick="toggleFlag(this)">Behaviour support</button><button class="flagpill" onclick="toggleFlag(this)">Uniform reminder today</button></div></div>
+              </div>
+
+              <div class="groster-row" data-person="Priya">
+                <div class="avatar g">PN</div>
+                <div class="gtextblock"><div class="gname-row"><span class="gname">Priya Nair</span></div><div class="gmeta">72% attendance · last: Needs support</div></div>
+                <button class="watch-toggle" onclick="toggleWatch(event,this)">☆</button>
+              </div>
+              <div class="gdetail" id="gdetail-Priya">
+                <div class="gblock"><div class="gblock-label">Recent sessions</div><div class="ghistory-full"><i></i><i class="n"></i><i></i><i class="a"></i><i></i></div><div class="skills-wrap"><div class="skill-chip"><div class="skill-chip-name">First touch</div><div class="skill-spark"><i class="n"></i></div><div class="skill-chip-meta">Needs support · 2wks</div></div></div></div>
+                <div class="gblock"><div class="gblock-label">Notes on Priya</div><div class="note-visibility"><button class="selected">Private</button><button>Share with family</button></div><textarea class="private-note" placeholder="Write a note."></textarea><div class="note-hint">Private notes are only visible to you.</div></div>
+                <div class="gblock"><div class="gblock-label">Quick flags</div><div class="flag-row"><button class="flagpill" data-group="move" onclick="toggleFlag(this)">Move up</button><button class="flagpill" data-group="move" onclick="toggleFlag(this)">Move down</button><button class="flagpill" onclick="toggleFlag(this)">Offer Elite trial</button><button class="flagpill" onclick="toggleFlag(this)">Neurodivergent</button><button class="flagpill" onclick="toggleFlag(this)">Behaviour support</button><button class="flagpill" onclick="toggleFlag(this)">Uniform reminder today</button></div></div>
+              </div>
+
+              <div class="groster-row" data-person="Leo">
+                <div class="avatar h">LT</div>
+                <div class="gtextblock"><div class="gname-row"><span class="gname">Leo Turner</span></div><div class="gmeta">67% attendance · last: Needs support</div></div>
+                <button class="watch-toggle" onclick="toggleWatch(event,this)">☆</button>
+              </div>
+              <div class="gdetail" id="gdetail-Leo">
+                <div class="gblock"><div class="gblock-label">Recent sessions</div><div class="ghistory-full"><i></i><i></i><i class="n"></i><i class="a"></i><i></i></div></div>
+                <div class="gblock"><div class="gblock-label">Notes on Leo</div><div class="note-visibility"><button class="selected">Private</button><button>Share with family</button></div><textarea class="private-note" placeholder="Write a note."></textarea><div class="note-hint">Private notes are only visible to you.</div></div>
+                <div class="gblock"><div class="gblock-label">Quick flags</div><div class="flag-row"><button class="flagpill" data-group="move" onclick="toggleFlag(this)">Move up</button><button class="flagpill" data-group="move" onclick="toggleFlag(this)">Move down</button><button class="flagpill" onclick="toggleFlag(this)">Offer Elite trial</button><button class="flagpill" onclick="toggleFlag(this)">Neurodivergent</button><button class="flagpill" onclick="toggleFlag(this)">Behaviour support</button><button class="flagpill" onclick="toggleFlag(this)">Uniform reminder today</button></div></div>
+              </div>
+
+              <!-- Jamal — welcome-back fact merged into Notes -->
+              <div class="groster-row" data-person="Jamal">
+                <div class="avatar d">JH</div>
+                <div class="gtextblock"><div class="gname-row"><span class="gname">Jamal Harris</span><span class="gtag">Welcome back</span></div><div class="gmeta">75% attendance · back after 3 missed sessions</div></div>
+                <button class="watch-toggle" onclick="toggleWatch(event,this)">☆</button>
+              </div>
+              <div class="gdetail" id="gdetail-Jamal">
+                <div class="gblock"><div class="gblock-label">Recent sessions</div><div class="ghistory-full"><i></i><i class="n"></i><i></i><i></i><i class="a"></i></div><div class="skills-wrap"><div class="skill-chip"><div class="skill-chip-name">First touch</div><div class="skill-spark"><i></i><i class="n"></i></div><div class="skill-chip-meta">Needs support · 4wks</div></div><div class="skill-chip"><div class="skill-chip-name">Ball striking</div><div class="skill-spark"><i class="s"></i></div><div class="skill-chip-meta">Strong · 8wks</div></div></div></div>
+                <div class="gblock">
+                  <div class="gblock-label">Notes on Jamal</div>
+                  <p class="checkin-lead">Jamal is back after missing three sessions — a private reminder or a welcome-back note to his family below.</p>
+                  <div class="note-visibility"><button class="selected">Private</button><button>Share with family</button></div>
+                  <textarea class="private-note" placeholder="Write a note — private, or shared with his family."></textarea>
+                  <div class="note-hint">Private notes are only visible to you.</div>
+                </div>
+                <div class="gblock"><div class="gblock-label">Quick flags</div><div class="flag-row"><button class="flagpill" data-group="move" onclick="toggleFlag(this)">Move up</button><button class="flagpill" data-group="move" onclick="toggleFlag(this)">Move down</button><button class="flagpill" onclick="toggleFlag(this)">Offer Elite trial</button><button class="flagpill" onclick="toggleFlag(this)">Neurodivergent</button><button class="flagpill" onclick="toggleFlag(this)">Behaviour support</button><button class="flagpill" onclick="toggleFlag(this)">Uniform reminder today</button></div></div>
+              </div>
+
+              <div class="groster-row" data-person="Maya">
+                <div class="avatar">MW</div>
+                <div class="gtextblock"><div class="gname-row"><span class="gname">Maya Williams</span></div><div class="gmeta">92% attendance · last: Strong</div></div>
+                <button class="watch-toggle on" onclick="toggleWatch(event,this)">★</button>
+              </div>
+              <div class="gdetail" id="gdetail-Maya">
+                <div class="gblock"><div class="gblock-label">Recent sessions</div><div class="ghistory-full"><i></i><i class="s"></i><i></i><i></i><i class="s"></i></div><div class="skills-wrap"><div class="skill-chip"><div class="skill-chip-name">First touch</div><div class="skill-spark"><i></i><i></i><i class="s"></i></div><div class="skill-chip-meta">Strong · today</div></div><div class="skill-chip"><div class="skill-chip-name">Passing</div><div class="skill-spark"><i class="n"></i><i class="s"></i></div><div class="skill-chip-meta">Strong · 3wks</div></div></div></div>
+                <div class="gblock"><div class="gblock-label">Notes on Maya</div><div class="note-visibility"><button class="selected">Private</button><button>Share with family</button></div><textarea class="private-note" placeholder="Write a note.">Give her more time to receive under pressure before she looks to release.</textarea><div class="note-hint">Private notes are only visible to you.</div></div>
+                <div class="gblock"><div class="gblock-label">Quick flags</div><div class="flag-row"><button class="flagpill" data-group="move" onclick="toggleFlag(this)">Move up</button><button class="flagpill" data-group="move" onclick="toggleFlag(this)">Move down</button><button class="flagpill" onclick="toggleFlag(this)">Offer Elite trial</button><button class="flagpill" onclick="toggleFlag(this)">Neurodivergent</button><button class="flagpill" onclick="toggleFlag(this)">Behaviour support</button><button class="flagpill" onclick="toggleFlag(this)">Uniform reminder today</button></div></div>
+              </div>
+
+              <div class="groster-row" data-person="Zara">
+                <div class="avatar c">ZA</div>
+                <div class="gtextblock"><div class="gname-row"><span class="gname">Zara Ahmed</span></div><div class="gmeta">95% attendance · last: Strong</div></div>
+                <button class="watch-toggle" onclick="toggleWatch(event,this)">☆</button>
+              </div>
+              <div class="gdetail" id="gdetail-Zara">
+                <div class="gblock"><div class="gblock-label">Recent sessions</div><div class="ghistory-full"><i></i><i></i><i class="s"></i><i></i><i class="s"></i></div></div>
+                <div class="gblock"><div class="gblock-label">Notes on Zara</div><div class="note-visibility"><button class="selected">Private</button><button>Share with family</button></div><textarea class="private-note" placeholder="Write a note."></textarea><div class="note-hint">Private notes are only visible to you.</div></div>
+                <div class="gblock"><div class="gblock-label">Quick flags</div><div class="flag-row"><button class="flagpill" data-group="move" onclick="toggleFlag(this)">Move up</button><button class="flagpill" data-group="move" onclick="toggleFlag(this)">Move down</button><button class="flagpill" onclick="toggleFlag(this)">Offer Elite trial</button><button class="flagpill" onclick="toggleFlag(this)">Neurodivergent</button><button class="flagpill" onclick="toggleFlag(this)">Behaviour support</button><button class="flagpill" onclick="toggleFlag(this)">Uniform reminder today</button></div></div>
+              </div>
+
+              <div class="groster-row" data-person="Sienna">
+                <div class="avatar e">SW</div>
+                <div class="gtextblock"><div class="gname-row"><span class="gname">Sienna Wallace</span></div><div class="gmeta">90% attendance · last: Strong</div></div>
+                <button class="watch-toggle" onclick="toggleWatch(event,this)">☆</button>
+              </div>
+              <div class="gdetail" id="gdetail-Sienna">
+                <div class="gblock"><div class="gblock-label">Recent sessions</div><div class="ghistory-full"><i></i><i class="s"></i><i></i><i></i><i></i></div></div>
+                <div class="gblock"><div class="gblock-label">Notes on Sienna</div><div class="note-visibility"><button class="selected">Private</button><button>Share with family</button></div><textarea class="private-note" placeholder="Write a note."></textarea><div class="note-hint">Private notes are only visible to you.</div></div>
+                <div class="gblock"><div class="gblock-label">Quick flags</div><div class="flag-row"><button class="flagpill" data-group="move" onclick="toggleFlag(this)">Move up</button><button class="flagpill" data-group="move" onclick="toggleFlag(this)">Move down</button><button class="flagpill" onclick="toggleFlag(this)">Offer Elite trial</button><button class="flagpill" onclick="toggleFlag(this)">Neurodivergent</button><button class="flagpill" onclick="toggleFlag(this)">Behaviour support</button><button class="flagpill" onclick="toggleFlag(this)">Uniform reminder today</button></div></div>
+              </div>
+
+              <div class="groster-row" data-person="Amelia">
+                <div class="avatar c">AL</div>
+                <div class="gtextblock"><div class="gname-row"><span class="gname">Amelia Lewis</span></div><div class="gmeta">100% attendance · last: Strong</div></div>
+                <button class="watch-toggle" onclick="toggleWatch(event,this)">☆</button>
+              </div>
+              <div class="gdetail" id="gdetail-Amelia">
+                <div class="gblock"><div class="gblock-label">Recent sessions</div><div class="ghistory-full"><i></i><i></i><i class="s"></i><i></i><i></i></div><div class="skills-wrap"><div class="skill-chip"><div class="skill-chip-name">First touch</div><div class="skill-spark"><i></i><i class="s"></i></div><div class="skill-chip-meta">Strong · 3wks</div></div></div></div>
+                <div class="gblock"><div class="gblock-label">Notes on Amelia</div><div class="note-visibility"><button class="selected">Private</button><button>Share with family</button></div><textarea class="private-note" placeholder="Write a note."></textarea><div class="note-hint">Private notes are only visible to you.</div></div>
+                <div class="gblock"><div class="gblock-label">Quick flags</div><div class="flag-row"><button class="flagpill" data-group="move" onclick="toggleFlag(this)">Move up</button><button class="flagpill" data-group="move" onclick="toggleFlag(this)">Move down</button><button class="flagpill" onclick="toggleFlag(this)">Offer Elite trial</button><button class="flagpill" onclick="toggleFlag(this)">Neurodivergent</button><button class="flagpill" onclick="toggleFlag(this)">Behaviour support</button><button class="flagpill" onclick="toggleFlag(this)">Uniform reminder today</button></div></div>
+              </div>
+
+              <div class="groster-row" data-person="Grace">
+                <div class="avatar g">GK</div>
+                <div class="gtextblock"><div class="gname-row"><span class="gname">Grace Kim</span></div><div class="gmeta">100% attendance · last: On track</div></div>
+                <button class="watch-toggle" onclick="toggleWatch(event,this)">☆</button>
+              </div>
+              <div class="gdetail" id="gdetail-Grace">
+                <div class="gblock"><div class="gblock-label">Recent sessions</div><div class="ghistory-full"><i></i><i></i><i></i><i></i><i></i></div></div>
+                <div class="gblock"><div class="gblock-label">Notes on Grace</div><div class="note-visibility"><button class="selected">Private</button><button>Share with family</button></div><textarea class="private-note" placeholder="Write a note."></textarea><div class="note-hint">Private notes are only visible to you.</div></div>
+                <div class="gblock"><div class="gblock-label">Quick flags</div><div class="flag-row"><button class="flagpill" data-group="move" onclick="toggleFlag(this)">Move up</button><button class="flagpill" data-group="move" onclick="toggleFlag(this)">Move down</button><button class="flagpill" onclick="toggleFlag(this)">Offer Elite trial</button><button class="flagpill" onclick="toggleFlag(this)">Neurodivergent</button><button class="flagpill" onclick="toggleFlag(this)">Behaviour support</button><button class="flagpill" onclick="toggleFlag(this)">Uniform reminder today</button></div></div>
+              </div>
+
+              <div class="groster-row" data-person="Mason">
+                <div class="avatar f">MR</div>
+                <div class="gtextblock"><div class="gname-row"><span class="gname">Mason Reid</span></div><div class="gmeta">80% attendance · last: On track</div></div>
+                <button class="watch-toggle" onclick="toggleWatch(event,this)">☆</button>
+              </div>
+              <div class="gdetail" id="gdetail-Mason">
+                <div class="gblock"><div class="gblock-label">Recent sessions</div><div class="ghistory-full"><i></i><i></i><i class="a"></i><i></i><i></i></div></div>
+                <div class="gblock"><div class="gblock-label">Notes on Mason</div><div class="note-visibility"><button class="selected">Private</button><button>Share with family</button></div><textarea class="private-note" placeholder="Write a note."></textarea><div class="note-hint">Private notes are only visible to you.</div></div>
+                <div class="gblock"><div class="gblock-label">Quick flags</div><div class="flag-row"><button class="flagpill" data-group="move" onclick="toggleFlag(this)">Move up</button><button class="flagpill" data-group="move" onclick="toggleFlag(this)">Move down</button><button class="flagpill" onclick="toggleFlag(this)">Offer Elite trial</button><button class="flagpill" onclick="toggleFlag(this)">Neurodivergent</button><button class="flagpill" onclick="toggleFlag(this)">Behaviour support</button><button class="flagpill" onclick="toggleFlag(this)">Uniform reminder today</button></div></div>
+              </div>
+
+              <div class="groster-row" data-person="Harper">
+                <div class="avatar h">HD</div>
+                <div class="gtextblock"><div class="gname-row"><span class="gname">Harper Douglas</span></div><div class="gmeta">98% attendance · last: On track</div></div>
+                <button class="watch-toggle" onclick="toggleWatch(event,this)">☆</button>
+              </div>
+              <div class="gdetail" id="gdetail-Harper">
+                <div class="gblock"><div class="gblock-label">Recent sessions</div><div class="ghistory-full"><i></i><i></i><i></i><i></i><i></i></div></div>
+                <div class="gblock"><div class="gblock-label">Notes on Harper</div><div class="note-visibility"><button class="selected">Private</button><button>Share with family</button></div><textarea class="private-note" placeholder="Write a note."></textarea><div class="note-hint">Private notes are only visible to you.</div></div>
+                <div class="gblock"><div class="gblock-label">Quick flags</div><div class="flag-row"><button class="flagpill" data-group="move" onclick="toggleFlag(this)">Move up</button><button class="flagpill" data-group="move" onclick="toggleFlag(this)">Move down</button><button class="flagpill" onclick="toggleFlag(this)">Offer Elite trial</button><button class="flagpill" onclick="toggleFlag(this)">Neurodivergent</button><button class="flagpill" onclick="toggleFlag(this)">Behaviour support</button><button class="flagpill" onclick="toggleFlag(this)">Uniform reminder today</button></div></div>
+              </div>
+
+              <div class="groster-row" data-person="Ethan">
+                <div class="avatar i">EB</div>
+                <div class="gtextblock"><div class="gname-row"><span class="gname">Ethan Brooks</span></div><div class="gmeta">88% attendance · last: On track</div></div>
+                <button class="watch-toggle" onclick="toggleWatch(event,this)">☆</button>
+              </div>
+              <div class="gdetail" id="gdetail-Ethan">
+                <div class="gblock"><div class="gblock-label">Recent sessions</div><div class="ghistory-full"><i></i><i></i><i></i><i class="a"></i><i></i></div></div>
+                <div class="gblock"><div class="gblock-label">Notes on Ethan</div><div class="note-visibility"><button class="selected">Private</button><button>Share with family</button></div><textarea class="private-note" placeholder="Write a note."></textarea><div class="note-hint">Private notes are only visible to you.</div></div>
+                <div class="gblock"><div class="gblock-label">Quick flags</div><div class="flag-row"><button class="flagpill" data-group="move" onclick="toggleFlag(this)">Move up</button><button class="flagpill" data-group="move" onclick="toggleFlag(this)">Move down</button><button class="flagpill" onclick="toggleFlag(this)">Offer Elite trial</button><button class="flagpill" onclick="toggleFlag(this)">Neurodivergent</button><button class="flagpill" onclick="toggleFlag(this)">Behaviour support</button><button class="flagpill" onclick="toggleFlag(this)">Uniform reminder today</button></div></div>
+              </div>
+
+              <div class="groster-row" data-person="Isla">
+                <div class="avatar e">IG</div>
+                <div class="gtextblock"><div class="gname-row"><span class="gname">Isla Grant</span><span class="gtag">New</span></div><div class="gmeta">Joined this week — no history yet</div></div>
+                <button class="watch-toggle" onclick="toggleWatch(event,this)">☆</button>
+              </div>
+              <div class="gdetail" id="gdetail-Isla">
+                <div class="gblock"><div class="gblock-label">Notes on Isla</div><div class="note-visibility"><button class="selected">Private</button><button>Share with family</button></div><textarea class="private-note" placeholder="Write a note — this will build up after her first session."></textarea><div class="note-hint">Private notes are only visible to you.</div></div>
+                <div class="gblock"><div class="gblock-label">Quick flags</div><div class="flag-row"><button class="flagpill" onclick="toggleFlag(this)">Neurodivergent</button><button class="flagpill" onclick="toggleFlag(this)">Uniform reminder today</button></div></div>
+              </div>
+
+            </div>
+          </section>
+
+          <section class="section">
+            <div class="section-label"><h2>Feedback about you</h2></div>
+            <div class="rating-row"><span class="rating-big">4.8 ★</span><span class="rating-sub">average from 6 families</span></div>
+            <div class="tagcloud">
+              <span class="fbtag">Encouraging ×4</span>
+              <span class="fbtag">Clear communicator ×3</span>
+              <span class="fbtag">Patient ×2</span>
+              <span class="fbtag watch">Running a few minutes late ×1</span>
+            </div>
+            <div class="quotes"><div class="quote">"Always encourages Maya to keep trying, even after a mistake." <small>From a family review, 3 weeks ago</small></div></div>
+            <div class="fb-note">Only visible to you — not shown to your group or other coaches.</div>
+          </section>
+
+          <footer class="footer">
+            <p><b>Still needed:</b> one more player to watch.</p>
+            <button class="submit" id="submit" disabled>Mark plan reviewed</button>
+          </footer>
+      </section>
+
+      <section class="tab-panel" id="panel-attendance">
+        <div class="summary"><span><b>13 here · 1 away</b></span><span id="progress">0 of 2 moments recorded</span></div>
+
+          <div class="rows">
+            <div class="row open" data-person="Maya" data-attended="true">
+              <div class="identity"><div class="a-avatar">MW</div><div class="textblock"><div class="name">Maya Williams</div><div class="under"><span class="a-tag">Watch</span><span class="history"><i></i><i class="s"></i><i></i><i></i><i class="s"></i></span></div></div></div>
+              <div class="right"><div class="status"><button class="selected">Here</button><button>Away</button></div><button class="more" onclick="menu(event,'m1')">⋯</button></div>
+              <div class="menu" id="m1"><button>No uniform today</button><button>Late arrival</button><button>MVP</button><button>Consider move up</button><button>Consider move down</button><button>Consider Elite trial</button></div>
+            </div>
+            <div class="editor show" id="editor-Maya">
+              <div class="editor-q">What did you notice today?</div>
+              <div class="actions"><button class="action" onclick="pick(this,'Maya','strong')">Strong</button><button class="action" onclick="pick(this,'Maya','support')">Needs support</button></div>
+              <textarea id="note-Maya" placeholder="Add a short, specific note once you choose a signal." oninput="checkSave('Maya')"></textarea>
+              <div class="editor-footer"><small id="hint-Maya">Choose a signal and add a note to save this moment.</small><button class="save" id="save-Maya" disabled onclick="save('Maya')">Save</button></div>
+            </div>
+
+            <div class="row" data-person="Noah" data-attended="true">
+              <div class="identity"><div class="a-avatar b">NJ</div><div class="textblock"><div class="name">Noah Jones</div><div class="under"><span class="a-tag">Watch</span><span class="history"><i class="a"></i><i class="a"></i><i></i><i class="n"></i><i></i></span></div></div></div>
+              <div class="right"><div class="status"><button class="selected">Here</button><button>Away</button></div><button class="more" onclick="menu(event,'m2')">⋯</button></div>
+              <div class="menu" id="m2"><button>No uniform today</button><button>Late arrival</button><button>MVP</button><button>Consider move up</button><button>Consider move down</button><button>Consider Elite trial</button></div>
+            </div>
+            <div class="editor" id="editor-Noah">
+              <div class="editor-q">What did you notice today?</div>
+              <div class="actions"><button class="action" onclick="pick(this,'Noah','strong')">Strong</button><button class="action" onclick="pick(this,'Noah','support')">Needs support</button></div>
+              <textarea id="note-Noah" placeholder="Add a short, specific note once you choose a signal." oninput="checkSave('Noah')"></textarea>
+              <div class="editor-footer"><small id="hint-Noah">Choose a signal and add a note to save this moment.</small><button class="save" id="save-Noah" disabled onclick="save('Noah')">Save</button></div>
+            </div>
+
+            <div class="row" data-person="Amelia" data-attended="true">
+              <div class="identity"><div class="a-avatar c">AL</div><div class="textblock"><div class="name">Amelia Lewis</div><div class="under"><span class="history"><i></i><i></i><i class="s"></i><i></i><i></i></span></div></div></div>
+              <div class="right"><div class="status"><button class="selected">Here</button><button>Away</button></div><button class="more" onclick="menu(event,'m3')">⋯</button></div>
+              <div class="menu" id="m3"><button>No uniform today</button><button>Late arrival</button><button>MVP</button><button>Consider move up</button><button>Consider move down</button><button>Consider Elite trial</button></div>
+            </div>
+            <div class="editor" id="editor-Amelia">
+              <div class="editor-q">What did you notice today?</div>
+              <div class="actions"><button class="action" onclick="pick(this,'Amelia','strong')">Strong</button><button class="action" onclick="pick(this,'Amelia','support')">Needs support</button></div>
+              <textarea id="note-Amelia" placeholder="Add a short, specific note once you choose a signal." oninput="checkSave('Amelia')"></textarea>
+              <div class="editor-footer"><small id="hint-Amelia">Choose a signal and add a note to save this moment.</small><button class="save" id="save-Amelia" disabled onclick="save('Amelia')">Save</button></div>
+            </div>
+
+            <div class="row blocked last" data-person="Jamal" data-attended="false">
+              <div class="identity"><div class="a-avatar d">JH</div><div class="textblock"><div class="name">Jamal Harris</div><div class="under"><span class="history"><i></i><i class="n"></i><i></i><i></i><i></i></span></div></div></div>
+              <div class="right"><div class="status"><button>Here</button><button class="selected">Away</button></div><button class="more" onclick="menu(event,'m4')">⋯</button></div>
+              <div class="menu" id="m4"><button>Record known absence reason</button><button>View player history</button></div>
+            </div>
+            <div class="editor" id="editor-Jamal">
+              <p class="blocked-msg">Jamal is marked absent today, so a moment cannot be recorded for him. Mark him Here first if this was a mistake, or use the menu to record a known absence reason.</p>
+            </div>
+          </div>
+
+          <div class="extra">
+            <div class="extra-label"><b>Not in your usual group?</b> Search to add a player who joined this session.</div>
+            <div class="search">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              <input id="extra-search" type="text" placeholder="Search by first name…" oninput="onExtraSearch(this.value)">
+            </div>
+            <div class="results" id="extra-results">
+              <div class="result" onclick="addExtra('Leo Turner')"><span class="mini-avatar">LT</span><span>Leo Turner<small>Development · Thursday group</small></span></div>
+              <div class="result" onclick="addExtra('Isla Grant')"><span class="mini-avatar">IG</span><span>Isla Grant<small>Development · Saturday group</small></span></div>
+            </div>
+            <div class="added-note" id="extra-added" style="display:none"></div>
+          </div>
+
+          <footer class="footer"><p><b>Still needed:</b> two players, each with one signal and one note.</p><button class="submit" id="submit-att" disabled>Submit attendance</button></footer>
+      </section>
+
+    </main>
+
+  </section>
+</main>
+
+<script>
+function togglePicker(e){
+  e.stopPropagation();
+  document.getElementById('picker').classList.toggle('show');
+}
+function choose(e,d,n,p){
+  e.stopPropagation();
+  document.getElementById('date').textContent=d;
+  document.getElementById('name').textContent=n;
+  document.getElementById('place').textContent=p;
+  document.querySelectorAll('.session').forEach(x=>x.classList.remove('active'));
+  e.currentTarget.classList.add('active');
+  document.getElementById('picker').classList.remove('show');
+}
+function switchTab(tab){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===tab));
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.toggle('active',p.id==='panel-'+tab));
+}
+
+/* --- pre-session planner interactions (plan tab) --- */
+let activeRow = 'Noah';
+let watchCount = 1;
+document.querySelectorAll('.groster-row').forEach(row => row.addEventListener('click', e => {
+  if (e.target.closest('.watch-toggle')) return;
+  const p = row.dataset.person;
+  if (p === activeRow) { document.getElementById('gdetail-'+p).classList.toggle('show'); row.classList.toggle('open'); activeRow = row.classList.contains('open') ? p : null; return; }
+  document.querySelectorAll('.gdetail').forEach(d => d.classList.remove('show'));
+  document.querySelectorAll('.groster-row').forEach(r => r.classList.remove('open'));
+  document.getElementById('gdetail-' + p).classList.add('show');
+  row.classList.add('open');
+  activeRow = p;
+}));
+function toggleWatch(e, btn){
+  e.stopPropagation();
+  const isOn = btn.classList.contains('on');
+  if (!isOn && watchCount >= 2) { alert('You already have two players being watched. Untap one first if you want to swap.'); return; }
+  if (isOn) { btn.classList.remove('on'); btn.textContent = '☆'; watchCount--; }
+  else { btn.classList.add('on'); btn.textContent = '★'; watchCount++; }
+  document.getElementById('watch-count').textContent = watchCount + ' of 2';
+  document.querySelectorAll('.snapshot .stat')[1].querySelector('b').textContent = watchCount + ' of 2';
+  const done = watchCount >= 2;
+  document.getElementById('tracker-count').textContent = (done ? 2 : 1) + ' of 2 done';
+  document.getElementById('tdot2').classList.toggle('done', done);
+  document.getElementById('submit').disabled = !done;
+  document.querySelector('.footer p').innerHTML = done ? '<b>Ready:</b> focus set, two players chosen.' : '<b>Still needed:</b> one more player to watch.';
+}
+function toggleFlag(btn){
+  const group = btn.dataset.group;
+  if (group) btn.parentElement.querySelectorAll('[data-group="'+group+'"]').forEach(b => { if (b !== btn) b.classList.remove('active'); });
+  btn.classList.toggle('active');
+}
+document.querySelectorAll('.note-visibility').forEach(nv=>{
+  nv.querySelectorAll('button').forEach(b=>b.addEventListener('click', e=>{
+    e.stopPropagation();
+    nv.querySelectorAll('button').forEach(x=>x.classList.remove('selected'));
+    b.classList.add('selected');
+  }));
+});
+function toggleSort(e){ e.stopPropagation(); document.getElementById('sort-popover').classList.toggle('show'); }
+function setSort(btn, label){
+  document.querySelectorAll('#sort-popover button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('sort-label').textContent = 'Sort: ' + label;
+  document.getElementById('sort-popover').classList.remove('show');
+}
+document.addEventListener('click', e=>{ if (!e.target.closest('.sort-control')) document.getElementById('sort-popover').classList.remove('show'); });
+document.querySelectorAll('.filter-row .chip-btn').forEach(f => f.addEventListener('click', () => {
+  document.querySelectorAll('.filter-row .chip-btn').forEach(x => x.classList.remove('active'));
+  f.classList.add('active');
+}));
+
+/* --- attendance close-out interactions (attendance tab) --- */
+const state = {};
+let active = 'Maya';
+
+function openRow(person, el) {
+  if (person === active) return;
+  document.querySelectorAll('.editor').forEach(x => x.classList.remove('show'));
+  document.querySelectorAll('.row').forEach(x => x.classList.remove('open'));
+  document.getElementById('editor-' + person).classList.add('show');
+  el.classList.add('open');
+  active = person;
+}
+document.querySelectorAll('.row').forEach(row => row.addEventListener('click', e => {
+  if (e.target.closest('.more,.menu,.status')) return;
+  openRow(row.dataset.person, row);
+}));
+
+function pick(btn, person, kind) {
+  const editor = document.getElementById('editor-' + person);
+  editor.querySelectorAll('.action').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  state[person] = state[person] || {};
+  state[person].signal = kind;
+  const note = document.getElementById('note-' + person);
+  if (!note.value) note.placeholder = kind === 'strong'
+    ? 'What did they do well today?'
+    : 'What support would help them next session?';
+  checkSave(person);
+}
+function checkSave(person) {
+  const note = document.getElementById('note-' + person).value.trim();
+  const hasSignal = !!(state[person] && state[person].signal);
+  document.getElementById('save-' + person).disabled = !(hasSignal && note.length >= 8);
+}
+function save(person) {
+  const note = document.getElementById('note-' + person).value.trim();
+  state[person].note = note;
+  state[person].complete = true;
+  const row = document.querySelector('.row[data-person="' + person + '"]');
+  let chip = row.querySelector('.done-chip');
+  if (!chip) {
+    chip = document.createElement('span');
+    chip.className = 'a-tag done-chip';
+    row.querySelector('.under').appendChild(chip);
+  }
+  chip.textContent = 'Moment saved';
+  updateProgress();
+}
+function updateProgress() {
+  const complete = Object.values(state).filter(s => s.complete).length;
+  const el = document.getElementById('progress');
+  el.textContent = complete + ' of 2 moments recorded';
+  el.classList.toggle('done', complete >= 2);
+  document.getElementById('submit-att').disabled = complete < 2;
+}
+function menu(e, id) {
+  e.stopPropagation();
+  document.querySelectorAll('.menu').forEach(x => x.classList.remove('show'));
+  document.getElementById(id).classList.add('show');
+}
+document.addEventListener('click', e => {
+  if (!e.target.closest('.menu,.more')) document.querySelectorAll('.menu').forEach(x => x.classList.remove('show'));
+});
+function onExtraSearch(v){
+  document.getElementById('extra-results').classList.toggle('show', v.trim().length > 0);
+}
+function addExtra(name){
+  document.getElementById('extra-search').value = '';
+  document.getElementById('extra-results').classList.remove('show');
+  const note = document.getElementById('extra-added');
+  note.style.display = 'block';
+  note.textContent = name + ' added to today’s roster.';
+}
+</script>
+</body>
+</html>
