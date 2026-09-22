@@ -258,6 +258,8 @@ button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px soli
 .editor{background:#fbfdfb}.editor-q{max-width:420px}
 .extra{background:#f7faf8}.footer{min-height:66px}
 @media(max-width:620px){.tracker{align-items:flex-start}.tracker-dots{width:100%;margin-left:0}.gdetail{margin-right:0;border-left:0;padding-left:4px}.groster-row{padding-left:4px;padding-right:4px}.snapshot{gap:1px}.stat{min-height:62px}.session-box{border-style:solid}.attrow{padding-top:12px;padding-bottom:12px}}
+.mobile-summary,.mobile-filter-toggle{display:none}
+@media(max-width:620px){.snapshot{display:none}.mobile-summary{display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid var(--line);color:var(--muted);font-size:12px}.mobile-summary b{color:var(--ink)}.group-section{padding-top:18px}.mobile-filter-toggle{display:flex;width:100%;align-items:center;justify-content:space-between;border:1px solid #d0d5dd;border-radius:8px;background:#fff;color:#475467;padding:9px 10px;margin:-2px 0 10px;font-weight:750;font-size:12px}.group-section:not(.mobile-tools-open)>.control-row,.group-section:not(.mobile-tools-open)>.control-divider{display:none}.group-section.mobile-tools-open .mobile-filter-toggle{border-color:var(--ink);color:var(--ink)}.group-section.mobile-tools-open .mobile-filter-toggle span:last-child{transform:rotate(180deg)}.filter-row{padding-bottom:2px}.chip-btn{padding:6px 9px}.section{padding-top:18px;padding-bottom:18px}.section-label h2{font-size:15px}.drill{padding:11px 10px}.drill-meta{font-size:11px}.footer{position:sticky;bottom:0;z-index:3;box-shadow:0 -7px 18px rgba(16,24,40,.06)}.footer p{max-width:205px}.footer .submit{padding:10px 12px}.editor{padding-left:0;padding-right:0}.editor-q{font-size:16px}.extra{padding-bottom:22px}}
 </style>
 </head>
 <body>
@@ -348,6 +350,7 @@ button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px soli
             <div class="stat"><b>2</b><span>Recent absences to consider</span></div>
             <div class="stat"><b>1</b><span>New to your group</span></div>
           </div>
+          <div class="mobile-summary" aria-label="Group summary"><b>14 players</b><span>·</span><span>2 check-ins</span><span>·</span><span>1 new to your group</span></div>
 
           <section class="section">
             <div class="section-label"><h2>Required drills</h2></div>
@@ -365,8 +368,9 @@ button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px soli
             <textarea class="intent" placeholder="e.g. Today we're working on receiving side-on under pressure. Encourage your child to keep trying, even if the first touch doesn't go to plan.">Today we're working on receiving side-on under pressure — encourage your child to keep trying, even if the first touch doesn't go to plan.</textarea>
           </section>
 
-          <section class="section">
+          <section class="section group-section">
             <div class="section-label"><h2>Your group</h2><span class="tag">14 players</span></div>
+            <button class="mobile-filter-toggle" type="button" onclick="toggleMobileControls(this)"><span>Sort &amp; filter group</span><span aria-hidden="true">⌄</span></button>
             <div class="control-row">
               <div class="sort-control">
                 <button class="sort-btn" onclick="toggleSort(event)">
@@ -807,6 +811,18 @@ function addExtra(name){
   note.style.display = 'block';
   note.textContent = name + ' added to today’s roster.';
 }
+function toggleMobileControls(button){
+  const section = button.closest('.group-section');
+  section.classList.toggle('mobile-tools-open');
+  button.setAttribute('aria-expanded', section.classList.contains('mobile-tools-open'));
+}
+function compactMobilePlanner(){
+  if (!window.matchMedia('(max-width:620px)').matches) return;
+  document.querySelectorAll('.groster-row').forEach(row => row.classList.remove('open'));
+  document.querySelectorAll('.gdetail').forEach(detail => detail.classList.remove('show'));
+  activeRow = null;
+}
+compactMobilePlanner();
 </script>
 </body>
 </html>
